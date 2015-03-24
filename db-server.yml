@@ -1,0 +1,11 @@
+---
+- hosts: db-servers
+
+  roles: 
+    - bootstrap
+    - hardened
+    - common
+    - postgres-server
+
+
+

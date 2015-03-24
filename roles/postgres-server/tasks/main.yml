@@ -1,0 +1,17 @@
+
+
+- name: ensure epel yum repo is installed
+  yum: name=epel-release state=latest
+
+- name: ensure python-psycopg2 is installed
+  yum: name=python-psycopg2 state=latest
+
+- name: ensure postgres server is installed
+  yum: name=postgresql-server state=latest
+
+- name: ensure keys for postgres
+  authorized_key: user=postgres key="{{ lookup('file', '/home/gregf/.ssh/id_rsa.pub') }}"
+ 
+- name: ensure postgres is enabled and running
+  service: name=postgresql enabled=yes state=restarted
+

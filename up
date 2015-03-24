@@ -1,0 +1,18 @@
+#!/bin/bash
+
+#
+
+ansible -i stage all -a /usr/bin/uptime -u ansible --sudo
+
+#val=`"ansible -i stage app-servers -a '/usr/bin/systemctl is-enabled tomcat' -u ansible --sudo`
+#echo $val
+
+val=`ansible -i stage app-servers -a '/usr/bin/systemctl status tomcat' -u ansible --sudo`
+echo $val | grep -c "running"
+
+val=`ansible -i stage lb-servers -a '/usr/bin/systemctl status haproxy' -u ansible --sudo`
+echo $val | grep -c "running"
+
+
+
+

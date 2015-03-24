@@ -1,0 +1,31 @@
+
+# put here by ansible
+
+Port 22
+
+PasswordAuthentication no
+ChallengeResponseAuthentication no
+PermitRootLogin without-password
+
+AcceptEnv LANG LC_*
+
+PrintMotd no
+Subsystem sftp /usr/libexec/openssh/sftp-server
+UsePAM yes
+X11Forwarding yes
+
+Banner /etc/issue
+
+UsePrivilegeSeparation yes
+
+Protocol 2
+
+LogLevel INFO
+
+TCPKeepAlive yes
+
+AllowUsers gregf ansible amandabackup
+
+
+
+

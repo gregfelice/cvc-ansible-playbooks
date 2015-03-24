@@ -1,0 +1,4 @@
+
+# http://www.tokiwinter.com/highly-available-load-balancing-of-apache-tomcat-using-haproxy-stunnel-and-keepalived/
+
+ansible-playbook -i stage -u ansible --sudo -s haproxy-tomcat.yml

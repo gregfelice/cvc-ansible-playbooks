@@ -1,0 +1,8 @@
+
+
+[new]
+newmachine.foo.com
+
+[base]
+machine1.foo.com
+machine2.foo.com

@@ -1,0 +1,13 @@
+
+
+- name: ensure haproxy is installed
+  yum: name=haproxy state=latest
+
+- name: ensure haproxy service is started
+  service: name=haproxy enabled=true state=restarted
+  
+- name: ensure keepalived is installed
+  yum: name=keepalived state=latest
+
+- name: ensure keepalived service is started
+  service: name=keepalived enabled=true state=restarted

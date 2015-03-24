@@ -1,0 +1,4 @@
+
+ansible-playbook -u ansible --sudo backup_server.yml
+
+

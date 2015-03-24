@@ -1,0 +1,14 @@
+---
+- hosts: db-servers
+  sudo: yes
+  sudo_user: postgres
+
+  roles: 
+    #- bootstrap
+    #- hardened
+    #- common
+    - postgres-db
+
+
+
+

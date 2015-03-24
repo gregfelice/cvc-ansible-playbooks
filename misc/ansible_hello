@@ -1,0 +1,4 @@
+
+# ansible bogo.constantlabs.com -a "/usr/bin/ls /" -u gregf --sudo --ask-sudo-pass
+
+ansible all -a "/usr/bin/ls /home/gregf/dev" -u gregf --sudo --ask-sudo-pass

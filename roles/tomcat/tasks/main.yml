@@ -1,0 +1,7 @@
+
+- name: ensure tomcat packages are installed
+  yum: name=tomcat state=latest
+
+- name: ensure tomcat service is enabled and running
+  service: name=tomcat enabled=yes state=restarted
+

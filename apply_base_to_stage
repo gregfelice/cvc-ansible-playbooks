@@ -1,0 +1,11 @@
+
+# apply base role to stage population
+
+ansible-playbook -i stage -u ansible --sudo -s base.yml --skip-tags "packages" -f 4
+
+
+
+
+
+
+

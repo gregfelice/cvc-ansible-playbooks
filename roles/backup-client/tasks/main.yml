@@ -1,0 +1,6 @@
+
+- name: ensure amanda software is installed
+  yum: name=amanda-client state=latest
+
+- name: add the server ssh-key to authorized keys
+  authorized_key: user=amandabackup key="{{ lookup('file', '/var/lib/amanda/ssh-key.pub') }}"

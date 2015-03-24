@@ -1,0 +1,15 @@
+""" 
+From: http://www.tldp.org/HOWTO/SSL-Certificates-HOWTO/x64.html
+
+1. A browser requests a secure page (usually https://).
+2. The web server sends its public key with its certificate.
+3. The browser checks that the certificate was issued by a trusted party (usually a trusted root CA), that the certificate is still valid and that the certificate is related to the site contacted.
+4. The browser then uses the public key, to encrypt a random symmetric encryption key and sends it to the server with the encrypted URL required as well as other encrypted http data.
+5. The web server decrypts the symmetric encryption key using its private key and uses the symmetric key to decrypt the URL and http data.
+6. The web server sends back the requested html document and http data encrypted with the symmetric key.
+7. The browser decrypts the http data and html document using the symmetric key and displays the information.
+
+Also see: https://www.openssl.org/docs/HOWTO/certificates.txt
+
+"""
+

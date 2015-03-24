@@ -1,0 +1,9 @@
+
+- name: ensure backup software is installed
+  yum: name=amanda-server state=latest update_cache=yes
+
+
+# http://wiki.zmanda.com/index.php/GSWA/Build_a_Basic_Configuration
+# ERROR: localhost: [can not stat /var/lib/amanda/gnutar-lists: No such file or directory]
+
+x

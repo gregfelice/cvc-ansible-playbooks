@@ -1,0 +1,4 @@
+#!/bin/bash
+
+ansible troll.constantlabs.com --sudo -m virt -a "name=bogo command=status"
+ansible troll.constantlabs.com --sudo -m virt -a "name=bogo command=list_vms"

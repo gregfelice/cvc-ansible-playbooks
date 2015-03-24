@@ -1,0 +1,13 @@
+
+# apply base role to stage population
+
+ansible-playbook -i stage -u ansible --sudo -s db-server.yml 
+
+ansible-playbook -i stage -u ansible -s db-create.yml
+
+
+
+
+
+
+

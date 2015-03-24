@@ -1,0 +1,4 @@
+---
+- hosts: troll.constantlabs.com
+  roles: 
+    - backup-server

@@ -1,0 +1,11 @@
+
+# configure app servers
+
+ansible-playbook -i stage -u ansible --sudo -s app-server.yml
+
+
+
+
+
+
+

@@ -1,0 +1,39 @@
+
+- name: ensure several packages are installed
+  yum: name={{ item }} state=latest update_cache=true
+  with_items:
+    - epel-release
+    - git
+    - zsh 
+    - git-core
+    - emacs-nox
+    - htop
+    - python-pip
+    - wget
+  tags:
+    - packages
+     
+- name: ensure gregf group is there
+  group: name={{user}} state=present gid=1000
+   
+- name: ensure gregf user is there
+  user: name={{user}} state=present uid=1000 shell=/bin/zsh group={{user}} groups=admin append=yes
+
+- name: ensure gregf public key is installed in authorized keys
+  authorized_key: user={{user}} key="{{ lookup('file', '/home/gregf/.ssh/id_rsa.pub') }}"
+
+- name: ensure home bin exists
+  file: path=/home/{{user}}/bin state=directory owner={{user}} group={{user}} mode=750
+
+- name: Clone oh-my-zsh repo
+  git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=/home/{{ user }}/.oh-my-zsh
+
+- name: install homeshick
+  git: repo=https://github.com/andsens/homeshick.git dest=/home/{{user}}/.homesick/repos/homeshick
+
+#- name: clone home
+#  shell: homeshick clone gregfelice/dotfiles
+
+#- name: link home
+#  shell: homeshick link dotfiles --force
+

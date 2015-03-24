@@ -1,0 +1,23 @@
+
+- name: disable that pesky selinux
+  selinux: state=disabled
+
+- debug: msg="TEST OF SYSTEM DEBUG {{foo}}"
+
+- name: clean up sudoers
+  lineinfile: dest=/etc/sudoers state=absent regexp="^%wheel"
+
+- name: ensure firewalld is started
+  service: name=firewalld state=started enabled=yes
+
+- name: configure firewall services / ports
+  firewalld: service=ssh permanent=true state=enabled
+
+- firewalld: service=http permanent=true state=enabled
+- firewalld: service=https permanent=true state=enabled
+- firewalld: port=8080/tcp permanent=true state=enabled
+- firewalld: port=8090/tcp permanent=true state=enabled
+
+- name: reload changes to firewalld
+  service: name=firewalld state=restarted
+
