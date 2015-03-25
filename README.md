@@ -27,6 +27,11 @@
 
 Ansible documentation is here: http://docs.ansible.com/
 
+
+# Coding Standards
+* Ansible is basically yaml. Emacs, VI, etc. all have yaml modes. They help.
+* We indent yaml 2 spaces. No tabs.
+
 # Other Notes
 
 ## Some Future Directions
