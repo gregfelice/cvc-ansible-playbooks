@@ -5,6 +5,12 @@
 * Naveen is working with Joe to give us his official time on this project
 * Still need to hear from Madan on his timeslice
 
+# Current Machines
+GREG 	  Cvldarch01-10v.cscdev.com        172.16.107.71
+ERIC 	  Cvldarch01-11v.cscdev.com        172.16.107.90
+NAVEEN 	  Cvldarch01-12v.cscdev.com        172.16.107.124
+MADAN 	  Cvldarch01-13v.cscdev.com        172.16.107.125
+
 # Getting off the ground
 
 ## Set up your ansible master, test that you can configure the master using ansible
