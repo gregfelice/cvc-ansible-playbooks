@@ -1,4 +1,9 @@
 
+# Quick Status
+* We're working off of machines generously provided from the EIT Arch lab, can be used to keep us moving (thanks Frank)
+* Waiting on additional machines from Scott's group, in progress, not a blocker
+* Naveen is working with Joe to give us his official time on this project
+* Still need to hear from Madan on his timeslice
 
 # Getting off the ground
 
