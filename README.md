@@ -1,18 +1,18 @@
-A quick ansible proof of concept.
 
-To get this all working:
 
-on your local machine:
+# Getting off the ground
 
-$ git clone https://github.com/gregfelice/ansible-playbooks.git
+## Set up your ansible master, test that you can configure the master using ansible
 
-$ yum install ansible
-
-$ touch /etc/ansible/hosts
-
-Configure hosts file as per documentation
-
-$ ./run
+* Get a development box
+* Get personal account on it
+* Get the root password for that box
+* Run $PROJECT_HOME/setup_master.sh
+* Set up your inventory file ($PROJECT_HOME/stage), adding the machine you are on to the [new] section
+* Run $PROJECT_HOME/apply_bootstrap_to_new
+* Set up your inventory file ($PROJECT_HOME/stage), moving the machine that you are on to the [base] section
+* Run $PROJECT_HOME/apply_base to stage
+* Start developing your role within the $PROJECT_HOMES/roles directory
 
 Ansible documentation is here: http://docs.ansible.com/
 
@@ -39,9 +39,5 @@ Ansible documentation is here: http://docs.ansible.com/
 
 ### Invoke playbooks via web services
 * TBD
-
-## Flows
-* Provision brand new machine from scratch
-* 
 
 
