@@ -3,16 +3,5 @@
 
   roles: 
     - bootstrap
-    - hardened
     - common
-    - backup-client
-    - gregf
 
-#- hosts: development-machines
-
-#  roles: 
-#    - bootstrap
-#    - hardened
-#    - common
-#    - backup-client
-#    - gregf

@@ -7,3 +7,5 @@ ansible-playbook -i stage -u root -s new.yml --ask-pass -vvvv
 
 
 
+
+

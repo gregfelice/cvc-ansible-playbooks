@@ -1,23 +1,18 @@
 
-- name: ensure networkmanager is deactivated
-  service: name=NetworkManager state=stopped enabled=no
+#- name: ensure networkmanager is deactivated
+#  service: name=NetworkManager state=stopped enabled=no
+#  when: 
 
 - name: ensure several packages are installed
-  yum: name={{ item }} state=latest update_cache=true
+  yum: name={{ item }} state=latest
   with_items:
     - epel-release
     - git
-    - git-core
     - emacs-nox
     - htop
     - python-pip
   tags:
     - packages
-
-- name: custom etc/issue
-  template: src=issue.j2 dest=/etc/issue owner=root
-
-### NTP
 
 - name: be sure ntp is installed
   yum: pkg=ntp state=installed
@@ -32,7 +27,4 @@
 - name: be sure ntpd is running and enabled
   service: name=ntpd state=running enabled=yes
   tags: ntp
-
-### END NTP
-
 

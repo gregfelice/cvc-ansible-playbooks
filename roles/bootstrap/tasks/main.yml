@@ -1,23 +1,14 @@
 
-# bootstrap tasks/main
-
-# goal: ensure the ansible user is installed correctly, and from here we no longer need to do work as root.
+# goal: ensure the ansible user is installed correctly
 
 - group: name=admin state=present gid=7777
 
 - name: add ansible user
-  user: name=ansible state=present uid=9393 shell=/usr/bin/bash group=admin append=yes
+  user: name=ansible state=present uid=9393 shell=/bin/bash group=admin append=yes
 
 - name: install authorized key
-  authorized_key: user=ansible key={{ansible_public_key}}
-
-- name: ensure ansible not in sudoers directly
-  lineinfile: dest=/etc/sudoers state=absent regexp="ansible"
+  authorized_key: user=ansible key="{{ lookup('file', '/home/ansible/.ssh/id_rsa.pub') }}"
 
 - name: ensure admin group in sudoers, so ansible has rights to do cool things
   lineinfile: dest=/etc/sudoers state=present regexp='^%ADMIN ALL\=' line='%ADMIN ALL=(ALL) NOPASSWD:ALL' validate='visudo -cf %s'
 
-- name: harden sshd configuration file
-  template: src=sshd_config.j2 dest=/etc/ssh/sshd_config backup=yes owner=0 group=0 mode=0644 validate='/usr/sbin/sshd -T -f %s'
-  notify:
-  - restart sshd
