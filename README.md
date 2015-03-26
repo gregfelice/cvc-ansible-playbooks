@@ -18,7 +18,7 @@
 * Get a development box
 * Get personal account on it
 * Get the root password for that box
-* Run $PROJECT_HOME/setup_master.sh
+* Run $PROJECT_HOME/install_master
 * Set up your inventory file ($PROJECT_HOME/stage), adding the machine you are on to the [new] section
 * Run $PROJECT_HOME/apply_bootstrap_to_new
 * Set up your inventory file ($PROJECT_HOME/stage), moving the machine that you are on to the [base] section
