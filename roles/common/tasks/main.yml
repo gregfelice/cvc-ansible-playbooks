@@ -6,11 +6,11 @@
 - name: ensure several packages are installed
   yum: name={{ item }} state=latest
   with_items:
-    - epel-release
-    - git
-    - emacs-nox
+    #- epel-release
+    #- git
+    #- emacs-nox
     - htop
-    - python-pip
+    #- python-pip
   tags:
     - packages
 

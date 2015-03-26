@@ -1,27 +1,29 @@
 #!/bin/bash
 
 # install epel
+echo "installing epel"
 sudo yum install -q -y epel-release
 
 # install ansible 1.8, create user
+echo "installing ansible"
 sudo yum install -q -y ansible
 sudo useradd ansible --uid 9393
 
 # install sshpass
+echo "installing sshpass"
 sudo yum install -q -y sshpass
 
-# ok - permission denied on the ansible folders. need to get access to them... thnking... 
+# add admin group, add myself to the admin group
+sudo groupadd --gid 7777 admin
+sudo usermod -a -G admin `whoami`
 
 # generate ansible keypair
-if [ -f ~ansible/.ssh/id_rsa ] 
+if sudo [ -f ~ansible/.ssh/id_rsa ] 
 then
     echo "keypair already exists for ansible, doing nothing."
 else
     echo "creating keypair for ansible. DO NOT ENTER A PASSPHRASE."
-    sudo -u ansible -s /usr/bin/ssh-keygen -q -t rsa -C ansible@cablevision.com  -f /tmp/id_rsa
-    sudo -u ansible -s mkdir -m 700 ~ansible/.ssh
-    sudo mv /tmp/id_rsa ~ansible/.ssh/
-    sudo mv /tmp/id_rsa.pub ~ansible/.ssh/
+    sudo -u ansible -s /usr/bin/ssh-keygen -q -t rsa -C ansible@cablevision.com
 fi
 
 # generate keypair for me, which will be added to the authorized_keys for ansible account

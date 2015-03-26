@@ -7,8 +7,8 @@
   user: name=ansible state=present uid=9393 shell=/bin/bash group=admin append=yes
 
 - name: install authorized key
-  authorized_key: user=ansible key="{{ lookup('file', '/home/ansible/.ssh/id_rsa.pub') }}"
+  authorized_key: user=ansible key="{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
 
 - name: ensure admin group in sudoers, so ansible has rights to do cool things
-  lineinfile: dest=/etc/sudoers state=present regexp='^%ADMIN ALL\=' line='%ADMIN ALL=(ALL) NOPASSWD:ALL' validate='visudo -cf %s'
+  lineinfile: dest=/etc/sudoers state=present regexp='^%admin ALL\=' line='%ADMIN ALL=(ALL) NOPASSWD:ALL' validate='visudo -cf %s'
 

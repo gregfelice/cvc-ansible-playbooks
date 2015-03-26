@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# install epel
+sudo yum remove -y -q epel-release
+
+# install ansible 1.8, create user
+sudo yum remove -y -q ansible
+sudo userdel -r ansible
+
+# install sshpass
+sudo yum remove -y -q sshpass
+
+# add admin group, add myself to the admin group
+sudo groupdel admin
+
