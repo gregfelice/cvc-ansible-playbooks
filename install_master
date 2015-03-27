@@ -9,6 +9,9 @@ echo "installing ansible"
 sudo yum install -q -y ansible
 sudo useradd ansible --uid 9393
 
+#install cowsay.  makes ansible output pretty.
+sudo yum -q -y install cowsay
+
 # install sshpass
 echo "installing sshpass"
 sudo yum install -q -y sshpass
