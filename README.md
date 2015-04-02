@@ -13,7 +13,7 @@
 
 # Getting off the ground
 
-## Set up your ansible master, test that you can configure the master using ansible
+## Set up your ansible master & target machine
 
 * Get a development box
 * Get personal account on it
