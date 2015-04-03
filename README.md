@@ -2,6 +2,7 @@
 # Development Notes
 
 ## Getting things working on RHEL6
+* Needed to disable selinux
 * sshd_config has an allowgroups directive sshlogin... disabled to get working
 * some changes to install_master, yum repos are behaving slightly differently than centos
 * CVC RHEL boxes ship with ksh as default shell, change?
