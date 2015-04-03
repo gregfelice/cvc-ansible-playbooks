@@ -1,15 +1,24 @@
 #!/bin/bash
 
+os_release=`lsb_release -is`
+
 # install epel
-echo "installing epel"
-# sudo yum install -q -y epel-release
-sudo rpm -Uvh http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+if [ $os_release = "RedHatEnterpriseServer" ]
+then 
+    echo "installing epel via rpm call for RHEL"
+    sudo rpm -Uvh http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+elif [ $os_release = "CentOS" ]
+then 
+    echo "installing epel via yum for CentOS"
+    sudo yum install -q -y epel-release
+fi
 
-# install python pip
-# yum install -y -q python-pip
-
-# install jinja2 - need to do this as RHEL6 doesn't have jinja2 in yum repos
-sudo rpm -Uvh ftp://mirror.switch.ch/pool/4/mirror/scientificlinux/6.6/x86_64/os/Packages/python-jinja2-2.2.1-2.el6_5.x86_64.rpm
+# manually install jinja2 if RHEL
+if [ $os_release = "RedHatEnterpriseServer" ]
+then 
+    echo "RHEL detected. Manually installing jinja2..."
+    sudo rpm -Uvh ftp://mirror.switch.ch/pool/4/mirror/scientificlinux/6.6/x86_64/os/Packages/python-jinja2-2.2.1-2.el6_5.x86_64.rpm
+fi
 
 # install ansible 1.8, create user
 echo "installing ansible"
