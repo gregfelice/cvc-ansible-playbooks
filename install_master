@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# install git
+echo "installing git"
+sudo yum install -q -y git
+
 # install epel
 echo "installing epel"
 sudo yum install -q -y epel-release

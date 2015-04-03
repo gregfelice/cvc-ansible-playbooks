@@ -1,32 +1,49 @@
-
-# Quick Status
-* We're working off of machines generously provided from the EIT Arch lab, can be used to keep us moving (thanks Frank)
-* Waiting on additional machines from Scott's group, in progress, not a blocker
-* Naveen is working with Joe to give us his official time on this project
-* Still need to hear from Madan on his timeslice
-
-# Current Machines
-* GREG 	  Cvldarch01-10v.cscdev.com        172.16.107.71
-* ERIC 	  Cvldarch01-11v.cscdev.com        172.16.107.90
-* NAVEEN 	  Cvldarch01-12v.cscdev.com        172.16.107.124
-* MADAN 	  Cvldarch01-13v.cscdev.com        172.16.107.125
-
 # Getting off the ground
 
-## Set up your ansible master, test that you can configure the master using ansible
+## Set up your ansible master & target machine
 
 * Get a development box
 * Get personal account on it
 * Get the root password for that box
-* Run $PROJECT_HOME/install_master
-* Set up your inventory file ($PROJECT_HOME/stage), adding the machine you are on to the [new] section
-* Run $PROJECT_HOME/apply_bootstrap_to_new
-* Set up your inventory file ($PROJECT_HOME/stage), moving the machine that you are on to the [base] section
-* Run $PROJECT_HOME/apply_base to stage
+* Git clone the ansible-playbooks repo from stash
+* Set up your inventory file ($PROJECT_HOME/stage), adding the machine you are on to the [new] and [base] section
+* SSH into the box you are currently on to populate the known_hosts file
+* Run $PROJECT_HOME/go.sh
+  * Accept all defaults for the ssh-keygen steps
+  * Enter root password when prompted
 * Start developing your role within the $PROJECT_HOMES/roles directory
 
-Ansible documentation is here: http://docs.ansible.com/
+# Machine Inventory
 
+## EIT Arch Lab
+
+| Owner | Hostname                  | IP             |
+|-------|---------------------------|----------------|
+| GREG 	| Cvldarch01-10v.cscdev.com | 172.16.107.71  |
+| ERIC 	| Cvldarch01-11v.cscdev.com | 172.16.107.90  |
+| NAVEEN| Cvldarch01-12v.cscdev.com | 172.16.107.124 |
+| MADAN | Cvldarch01-13v.cscdev.com | 172.16.107.125 |
+
+## vSphere Pre-Provisioned Hosts
+* root password before change: @nsib1e
+
+| Owner | Hostname                  | IP             |
+|-------|---------------------------|----------------|
+| NAVEEN| cvldans1.cscdev.com       |                |
+| NAVEEN| cvldans2.cscdev.com       |                |
+|       | cvldans3.cscdev.com       |                |
+|       | cvldans4.cscdev.com       |                |
+|       | cvldans5.cscdev.com       |                |
+|       | cvldans6.cscdev.com       |                |
+|       | cvldans7.cscdev.com       |                |
+|       | cvldans8.cscdev.com       |                |
+
+## vSphere Console Access
+* username: ansibleadmin@ndcvc.com
+* password: Ans1ble@dm1n
+* This account has been configure to see the Devcl2-Vol01-Ansible-7045-0396 data store.
+* You will be able to use the following range of IPs: 172.16.110.44 – 172.16.110.54
+* We are also in the process of obtaining an additional 10 IPs on the 172.16.111 VLAN.
 
 # Coding Standards
 * Ansible is basically yaml. Emacs, VI, etc. all have yaml modes. They help.
