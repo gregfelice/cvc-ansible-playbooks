@@ -27,4 +27,16 @@ for LAST_OCTET in `seq $START_LAST_OCTET $END_LAST_OCTET`
 do
   echo $LAST_OCTET
   #Do Something here
+  #To be available, it MUST not be pingable AND must NOT be in DNS (PTR record is the only thing we can check).
+  #Check DNS
+  if host $SUBNET.$LAST_OCTET
+  then
+    echo "Host is in DNS"
+    AVAIL=NO
+  elseif ping -c3 -w3 $SUBNET.$LAST_OCTET
+    AVAIL=NO
+  else
+    AVAIL=YES
+  fi
+  echo $SUBNET.$LAST_OCTET,$AVAIL
 done
