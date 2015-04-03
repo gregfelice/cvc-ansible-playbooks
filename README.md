@@ -1,4 +1,3 @@
-
 # Development Notes
 
 ## Getting things working on RHEL6
