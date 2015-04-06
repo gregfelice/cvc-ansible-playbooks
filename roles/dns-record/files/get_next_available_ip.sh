@@ -50,3 +50,7 @@ do
   fi
   #echo $SUBNET.$LAST_OCTET,$IN_DNS,$PINGABLE,$AVAIL
 done
+
+#if we didn't exit in the loop with the first avail IP, then none must be available. exit here with error
+echo "ERROR: No IPs available in that range"
+exit 1
