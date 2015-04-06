@@ -23,20 +23,30 @@ SUBNET=${START_ADDRESS_ARRAY[0]}.${START_ADDRESS_ARRAY[1]}.${START_ADDRESS_ARRAY
 #echo $START_LAST_OCTET - $END_LAST_OCTET
 #echo $SUBNET
 
+#echo IP_ADDR,IN_DNS,PINGABLE,AVAILABLE
 for LAST_OCTET in `seq $START_LAST_OCTET $END_LAST_OCTET`
 do
-  echo $LAST_OCTET
-  #Do Something here
   #To be available, it MUST not be pingable AND must NOT be in DNS (PTR record is the only thing we can check).
-  #Check DNS
-  if host $SUBNET.$LAST_OCTET
+  if host $SUBNET.$LAST_OCTET &>/dev/null		#Check to see if IP is in DNS
   then
-    echo "Host is in DNS"
+    IN_DNS=YES
     AVAIL=NO
-  elseif ping -c3 -w3 $SUBNET.$LAST_OCTET
+    PINGABLE=N/A
+  elif ping -c2 -w2 $SUBNET.$LAST_OCTET &>/dev/null	#Check if its pingable
+  then
+    PINGABLE=YES
+    IN_DNS=NO
     AVAIL=NO
   else
+    PINGABLE=NO
+    IN_DNS=NO
     AVAIL=YES
   fi
-  echo $SUBNET.$LAST_OCTET,$AVAIL
+  #Exit once you find an available IP. Print the IP that is avail.
+  if [ "$AVAIL" == "YES" ]
+  then
+    echo $SUBNET.$LAST_OCTET
+    exit 0
+  fi
+  #echo $SUBNET.$LAST_OCTET,$IN_DNS,$PINGABLE,$AVAIL
 done
