@@ -57,6 +57,34 @@
 * You will be able to use the following range of IPs: 172.16.110.44 – 172.16.110.54
 * We are also in the process of obtaining an additional 10 IPs on the 172.16.111 VLAN.
 
+## IP ranges
+'''
+INC0248074 bp 4/6/2015              172        16           111        100
+INC0248074 bp 4/6/2015              172        16           111        101
+INC0248074 bp 4/6/2015              172        16           111        102
+INC0248074 bp 4/6/2015              172        16           111        103
+INC0248074 bp 4/6/2015              172        16           111        104
+INC0248074 bp 4/6/2015              172        16           111        105
+INC0248074 bp 4/6/2015              172        16           111        106
+INC0248074 bp 4/6/2015              172        16           111        107
+INC0248074 bp 4/6/2015              172        16           111        108
+INC0248074 bp 4/6/2015              172        16           111        109
+
+INC0248074 BP 4/3/2015              172        16           110        44
+INC0248074 BP 4/3/2015              172        16           110        45
+INC0248074 BP 4/3/2015              172        16           110        46
+INC0248074 BP 4/3/2015              172        16           110        47
+INC0248074 BP 4/3/2015              172        16           110        48
+INC0248074 BP 4/3/2015              172        16           110        49
+INC0248074 BP 4/3/2015              172        16           110        50
+INC0248074 BP 4/3/2015              172        16           110        51
+INC0248074 BP 4/3/2015              172        16           110        52
+INC0248074 BP 4/3/2015              172        16           110        53
+INC0248074 BP 4/3/2015              172        16           110        54
+'''
+
+
+
 # Coding Standards
 * Ansible is basically yaml. Emacs, VI, etc. all have yaml modes. They help.
 * We indent yaml 2 spaces. No tabs.
