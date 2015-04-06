@@ -1,0 +1,8 @@
+---
+- hosts: orange:&dev:&group_a
+
+  roles: 
+    - hardened
+
+  vars_files:
+    - group_vars/group_a

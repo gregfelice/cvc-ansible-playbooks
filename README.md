@@ -12,6 +12,8 @@
 
 ## Set up your ansible master & target machine
 
+* (Make sure selinux is disabled)
+
 * Get a development box
 * Get personal account on it
 * Get the root password for that box
@@ -41,8 +43,8 @@
 |-------|---------------------------|----------------|
 | NAVEEN| cvldans1.cscdev.com       |                |
 | NAVEEN| cvldans2.cscdev.com       |                |
-|       | cvldans3.cscdev.com       |                |
-|       | cvldans4.cscdev.com       |                |
+| GREG  | cvldans3.cscdev.com       |                |
+| GREG  | cvldans4.cscdev.com       |                |
 |       | cvldans5.cscdev.com       |                |
 |       | cvldans6.cscdev.com       |                |
 |       | cvldans7.cscdev.com       |                |
@@ -54,6 +56,34 @@
 * This account has been configure to see the Devcl2-Vol01-Ansible-7045-0396 data store.
 * You will be able to use the following range of IPs: 172.16.110.44 – 172.16.110.54
 * We are also in the process of obtaining an additional 10 IPs on the 172.16.111 VLAN.
+
+## IP ranges
+```
+INC0248074 bp 4/6/2015              172        16           111        100
+INC0248074 bp 4/6/2015              172        16           111        101
+INC0248074 bp 4/6/2015              172        16           111        102
+INC0248074 bp 4/6/2015              172        16           111        103
+INC0248074 bp 4/6/2015              172        16           111        104
+INC0248074 bp 4/6/2015              172        16           111        105
+INC0248074 bp 4/6/2015              172        16           111        106
+INC0248074 bp 4/6/2015              172        16           111        107
+INC0248074 bp 4/6/2015              172        16           111        108
+INC0248074 bp 4/6/2015              172        16           111        109
+
+INC0248074 BP 4/3/2015              172        16           110        44
+INC0248074 BP 4/3/2015              172        16           110        45
+INC0248074 BP 4/3/2015              172        16           110        46
+INC0248074 BP 4/3/2015              172        16           110        47
+INC0248074 BP 4/3/2015              172        16           110        48
+INC0248074 BP 4/3/2015              172        16           110        49
+INC0248074 BP 4/3/2015              172        16           110        50
+INC0248074 BP 4/3/2015              172        16           110        51
+INC0248074 BP 4/3/2015              172        16           110        52
+INC0248074 BP 4/3/2015              172        16           110        53
+INC0248074 BP 4/3/2015              172        16           110        54
+```
+
+
 
 # Coding Standards
 * Ansible is basically yaml. Emacs, VI, etc. all have yaml modes. They help.
@@ -83,4 +113,6 @@
 ### Invoke playbooks via web services
 * TBD
 
+### Working on cluster concept - thinking of a group of machines as a configuration unit
+* https://gist.github.com/anonymous/5e1f88c5acc0dc699093
 
