@@ -1,3 +1,13 @@
+# Development Notes
+
+## Getting things working on RHEL6
+* Needed to disable selinux
+* sshd_config has an allowgroups directive sshlogin... disabled to get working
+* some changes to install_master, yum repos are behaving slightly differently than centos
+* CVC RHEL boxes ship with ksh as default shell, change?
+* not sure procedure to add user to box, and what sudoer groups make sense (aside from the admin sudo group we create), instead running as root until fix
+* changed visudo validation to fully qualified path
+
 # Getting off the ground
 
 ## Set up your ansible master & target machine
