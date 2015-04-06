@@ -113,4 +113,6 @@ INC0248074 BP 4/3/2015              172        16           110        54
 ### Invoke playbooks via web services
 * TBD
 
+### Working on cluster concept - thinking of a group of machines as a configuration unit
+* https://gist.github.com/anonymous/5e1f88c5acc0dc699093
 

@@ -1,0 +1,10 @@
+# Select the version of Tomcat to use - 6/7/8
+tomcat_version: 7
+
+# Set Tomcat memory limits
+tomcat_memory_settings:
+  auth-services:
+    heap_size_min: 175m
+    heap_size_max: 1g
+    perm_size_min: 175m
+    perm_size_max: 175m

@@ -1,0 +1,7 @@
+
+ansible-playbook -i experimental -u ansible --sudo -s config_cluster.yml
+
+# --skip-tags "packages" -vvvv
+
+
+
