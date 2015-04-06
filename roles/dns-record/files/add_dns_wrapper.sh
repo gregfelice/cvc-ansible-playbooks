@@ -1,5 +1,8 @@
 #!/bin/bash
 
+BASE_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+cd $BASE_DIR
+
 if [ "$#" -ne 3 ]
 then
   echo "Usage:   $0 START_IP_ADDR END_IP_ADDR FQDN_HOSTNAME"
@@ -26,4 +29,5 @@ then
   echo "$IP_TO_USE"
 else
   echo "ERROR: DNS Add Return Code: $DNS_ADD_RC"
+  exit $DNS_ADD_RC
 fi
