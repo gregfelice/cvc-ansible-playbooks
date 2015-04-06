@@ -32,14 +32,14 @@ IP_ADDR=$2
 echo "server $DNS_SERVER
 prereq nxdomain $FQDN.
 update add $FQDN. $TTL IN A $IP_ADDR
+show
 send
 " | /usr/bin/nsupdate -k $KEYFILE
-RC=$?
 
 #REVERSE ENTRY (PTR RECORD) only if A Record was successful
-if [ "$RC" -ne 0 ]
+if [ "$?" -ne 0 ]
 then
-  exit $RC
+  exit $?
 else
   #Reverse the IP Address so it is in IN.ADDR.ARPA format.
   PTR_ADDR_ARRAY=(${IP_ADDR//./ })
@@ -47,6 +47,7 @@ else
   echo "server $DNS_SERVER
   prereq nxdomain $PTR_ADDR
   update add $PTR_ADDR $TTL PTR $FQDN.
+  show
   send
   " | /usr/bin/nsupdate -k $KEYFILE
 fi
