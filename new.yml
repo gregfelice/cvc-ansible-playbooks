@@ -1,7 +1,0 @@
----
-- hosts: new
-
-  roles: 
-    - bootstrap
-
-
