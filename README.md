@@ -3,15 +3,15 @@
 ## Current Sprint Goals
 
 * On 6 boxes from EIT Arch lab, all centos, demonstrate the following
- * HA Proxy as load balancer
- * JBoss as app server in cluster of 2 (work on single first)
- * Bind in EIT lab as DNS
- * Self signed SSL deployed to ?
- * All wrapped with orchestration (see lamp / haproxy example)
-* Work the following issues in parallel with above, report on progress
- * vSphere guest provisioning
- * F5 load balancers
- * Verisign API based CA signed SSL certs
+  * HA Proxy as load balancer
+  * JBoss as app server in cluster of 2 (work on single first)
+  * Bind in EIT lab as DNS
+  * Self signed SSL deployed to ?
+  * All wrapped with orchestration (see lamp / haproxy example)
+* Work the following issues in parallel with above, report on progress 
+  * vSphere guest provisionin g
+  * F5 load balancers
+  * Verisign API based CA signed SSL certs
 
 # Getting off the ground
 
@@ -24,8 +24,8 @@
 * Set up your inventory file ($PROJECT_HOME/stage), adding the machine you are on to the [new] and [base] section
 * SSH into the box you are currently on to populate the known_hosts file
 * Run $PROJECT_HOME/go.sh
-  * Accept all defaults for the ssh-keygen steps
-  * Enter root password when prompted
+** Accept all defaults for the ssh-keygen steps
+** Enter root password when prompted
 * Start developing your role within the $PROJECT_HOMES/roles directory
 
 # Machine Inventory
