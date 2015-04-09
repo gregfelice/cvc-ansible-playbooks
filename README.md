@@ -37,10 +37,12 @@ Work the following issues in parallel with above, report on progress
 
 | Owner | Hostname                  | IP             |
 |-------|---------------------------|----------------|
-| GREG 	| Cvldarch01-10v.cscdev.com | 172.16.107.71  |
-| ERIC 	| Cvldarch01-11v.cscdev.com | 172.16.107.90  |
-| NAVEEN| Cvldarch01-12v.cscdev.com | 172.16.107.124 |
-| NAVEEN| Cvldarch01-13v.cscdev.com | 172.16.107.125 |
+| GREG 	| cvldarch01-10v.cscdev.com | 172.16.107.71  |
+| GREG 	| cvldarch02.cscdev.com     | 172.16.107.69  |
+| ERIC 	| cvldarch01-11v.cscdev.com | 172.16.107.90  |
+| ERIC 	| cvldarch05.cscdev.com     | 172.16.107.91  |
+| NAVEEN| cvldarch01-12v.cscdev.com | 172.16.107.124 |
+| NAVEEN| cvldarch01-13v.cscdev.com | 172.16.107.125 |
 
 ## vSphere Pre-Provisioned Hosts
 * root password before change: @nsib1e
