@@ -3,12 +3,15 @@
 ## Current Sprint Goals
 
 On 6 boxes from EIT Arch lab, all centos, demonstrate the following
+
 * HA Proxy as load balancer
 * JBoss as app server in cluster of 2 (work on single first)
 * Bind in EIT lab as DNS
 * Self signed SSL deployed to ?
 * All wrapped with orchestration (see lamp / haproxy example)
+
 Work the following issues in parallel with above, report on progress 
+
 * vSphere guest provisionin g
 * F5 load balancers
 * Verisign API based CA signed SSL certs
