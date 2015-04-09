@@ -34,7 +34,7 @@
 | GREG 	| Cvldarch01-10v.cscdev.com | 172.16.107.71  |
 | ERIC 	| Cvldarch01-11v.cscdev.com | 172.16.107.90  |
 | NAVEEN| Cvldarch01-12v.cscdev.com | 172.16.107.124 |
-| MADAN | Cvldarch01-13v.cscdev.com | 172.16.107.125 |
+| NAVEEN| Cvldarch01-13v.cscdev.com | 172.16.107.125 |
 
 ## vSphere Pre-Provisioned Hosts
 * root password before change: @nsib1e
