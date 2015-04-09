@@ -3,14 +3,29 @@
 #  service: name=NetworkManager state=stopped enabled=no
 #  when: 
 
+#- name: ensure epel is installed
+#  command: /bin/rpm -Uvh http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+
+- name: ensure epel
+  yum: name=epel-release state=latest
+
 - name: ensure several packages are installed
   yum: name={{ item }} state=latest
   with_items:
-    - epel-release
     - git
     - emacs-nox
-    #- htop
-    #- python-pip
+  tags:
+    - packages
+
+#- debug: msg="{{ansible_os_family}}"
+#- debug: msg="{{ansible_lsb.major_release}}"
+
+- name: ensure several OTHER packages are installed, that only work on RedHat 7+
+  yum: name={{ item }} state=latest
+  with_items:
+    - htop
+  when: 
+    ansible_os_family == "RedHat" and ansible_lsb.major_release|int >= 7
   tags:
     - packages
 

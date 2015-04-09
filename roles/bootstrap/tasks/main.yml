@@ -10,5 +10,5 @@
   authorized_key: user=ansible key="{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
 
 - name: ensure admin group in sudoers, so ansible has rights to do cool things
-  lineinfile: dest=/etc/sudoers state=present regexp='^%admin ALL\=' line='%ADMIN ALL=(ALL) NOPASSWD:ALL' validate='/usr/sbin/visudo -cf %s'
+  lineinfile: dest=/etc/sudoers state=present regexp='^%admin ALL\=' line='%admin ALL=(ALL) NOPASSWD:ALL' validate='/usr/sbin/visudo -cf %s'
 

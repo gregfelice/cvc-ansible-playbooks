@@ -54,4 +54,3 @@ else
     myemail="`whoami`@cablevision.com"
     ssh-keygen -t rsa -C $myemail
 fi
-
