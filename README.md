@@ -1,18 +1,21 @@
 # Development Notes
 
-## Getting things working on RHEL6
-* Needed to disable selinux
-* sshd_config has an allowgroups directive sshlogin... disabled to get working
-* some changes to install_master, yum repos are behaving slightly differently than centos
-* CVC RHEL boxes ship with ksh as default shell, change?
-* not sure procedure to add user to box, and what sudoer groups make sense (aside from the admin sudo group we create), instead running as root until fix
-* changed visudo validation to fully qualified path
+## Current Sprint Goals
+
+* On 6 boxes from EIT Arch lab, all centos, demonstrate the following
+  * HA Proxy as load balancer
+  * JBoss as app server in cluster of 2 (work on single first)
+  * Bind in EIT lab as DNS
+  * Self signed SSL deployed to ?
+  * All wrapped with orchestration (see lamp / haproxy example)
+* Work the following issues in parallel with above, report on progress
+  * vSphere guest provisioning
+  * F5 load balancers
+  * Verisign API based CA signed SSL certs
 
 # Getting off the ground
 
 ## Set up your ansible master & target machine
-
-* (Make sure selinux is disabled)
 
 * Get a development box
 * Get personal account on it
@@ -83,8 +86,6 @@ INC0248074 BP 4/3/2015              172        16           110        53
 INC0248074 BP 4/3/2015              172        16           110        54
 ```
 
-
-
 # Coding Standards
 * Ansible is basically yaml. Emacs, VI, etc. all have yaml modes. They help.
 * We indent yaml 2 spaces. No tabs.
@@ -116,3 +117,12 @@ INC0248074 BP 4/3/2015              172        16           110        54
 ### Working on cluster concept - thinking of a group of machines as a configuration unit
 * https://gist.github.com/anonymous/5e1f88c5acc0dc699093
 
+# Development Notes
+
+## Getting things working on RHEL6
+* Needed to disable selinux
+* sshd_config has an allowgroups directive sshlogin... disabled to get working
+* some changes to install_master, yum repos are behaving slightly differently than centos
+* CVC RHEL boxes ship with ksh as default shell, change?
+* not sure procedure to add user to box, and what sudoer groups make sense (aside from the admin sudo group we create), instead running as root until fix
+* changed visudo validation to fully qualified path
