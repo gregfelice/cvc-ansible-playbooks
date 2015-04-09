@@ -1,3 +1,6 @@
+---
+# Variables here are applicable to all host groups
 
-
-foo: bar_all
+httpd_port: 80
+ntpserver: 0.north-america.pool.ntp.org
+foo: bar
