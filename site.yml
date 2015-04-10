@@ -11,6 +11,8 @@
   roles:
     - common
 
+# show DNS interactions against dev bind. eric current owner.
+
 # configure and deploy jboss server(s).
 - hosts: webservers
   user: root
