@@ -1,13 +1,28 @@
 
 
-- name: ensure haproxy is installed
-  yum: name=haproxy state=latest
+#- name: ensure haproxy is installed
+#  yum: name=haproxy state=latest
 
-- name: ensure haproxy service is started
-  service: name=haproxy enabled=true state=restarted
+#- name: ensure haproxy service is started
+#  service: name=haproxy enabled=true state=restarted
   
-- name: ensure keepalived is installed
-  yum: name=keepalived state=latest
+#- name: ensure keepalived is installed
+#  yum: name=keepalived state=latest
 
-- name: ensure keepalived service is started
-  service: name=keepalived enabled=true state=restarted
+#- name: ensure keepalived service is started
+#  service: name=keepalived enabled=true state=restarted
+
+- name: Download and install haproxy and socat
+  yum: name={{ item }} state=present
+  with_items:
+  - haproxy
+  - socat
+
+- name: Configure the haproxy cnf file with hosts
+  template: src=haproxy.cfg.j2 dest=/etc/haproxy/haproxy.cfg
+  notify: restart haproxy
+
+- name: Start the haproxy service
+  service: name=haproxy state=started enabled=yes
+
+
