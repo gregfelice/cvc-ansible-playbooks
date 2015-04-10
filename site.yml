@@ -1,5 +1,9 @@
----
-# This playbook deploys the whole application stack in this site.  
+
+# NOTES FOR BENNO
+# benno, here's some basics that we've worked out for the initial install. 
+# note that we are using haproxy while we get the f5 infrastructure worked out. 
+# what would be helpful is some example code that would precede what you see, that shows us a 'best practice' for provisioning and configuring vsphere guests.
+# thanks, greg
 
 # Apply common configuration to all hosts
 - hosts: all
@@ -11,12 +15,11 @@
 - hosts: webservers
   user: root
   roles:
-    #- base-apache
-    #- web
-    - jboss
+    - jboss # naveen to implement this. single configuration file for cluster configs should be deployed along with installed pacakges.
+    # - ssl_certs # eric to implement this, self-signed for first round...
 
 # Configure and deploy the load balancer(s).
 - hosts: lbservers
   user: root
   roles:
-    - haproxy
+    - haproxy # basic installation working. need to ensure that it works with jboss. greg current owner.
