@@ -2,18 +2,15 @@
 #- name: ensure networkmanager is deactivated
 #  service: name=NetworkManager state=stopped enabled=no
 #  when: 
+#    ansible_os_family == "RedHat" and ansible_lsb.major_release|int >= 7
 
 #- name: ensure epel is installed
 #  command: /bin/rpm -Uvh http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 
-- name: ensure epel
-  yum: name=epel-release state=latest
-
 - name: ensure several packages are installed
   yum: name={{ item }} state=latest
   with_items:
-    - git
-    - emacs-nox
+    - epel-release
   tags:
     - packages
 

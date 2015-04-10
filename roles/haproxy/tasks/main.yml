@@ -12,11 +12,19 @@
 #- name: ensure keepalived service is started
 #  service: name=keepalived enabled=true state=restarted
 
+#- debug: var=daemonname
+#- debug: var=hostvars['172.16.107.69']['ansible_default_ipv4']['address']
+#- debug: var=iface
+#- debug: var=listenport
+#- debug: var=httpd_port
+
 - name: Download and install haproxy and socat
   yum: name={{ item }} state=present
   with_items:
-  - haproxy
-  - socat
+    - haproxy
+    - socat
+  tags:
+    - packages
 
 - name: Configure the haproxy cnf file with hosts
   template: src=haproxy.cfg.j2 dest=/etc/haproxy/haproxy.cfg
@@ -24,5 +32,4 @@
 
 - name: Start the haproxy service
   service: name=haproxy state=started enabled=yes
-
 
