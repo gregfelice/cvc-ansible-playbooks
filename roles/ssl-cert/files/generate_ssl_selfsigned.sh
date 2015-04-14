@@ -22,13 +22,16 @@ OU="Enterprise IT"
 TODAY=`date +%m-%d-%Y_%H%M`
 
 #step 1 - generate private key
-/usr/bin/openssl genrsa -out $FULL_NAME-$TODAY.key
+/usr/bin/openssl genrsa -out $FULL_NAME-$TODAY.key &>/dev/null
 
 #step 2 - generate the CSR
-/usr/bin/openssl req -new -subj "/CN=$FULL_NAME/O=$ORGANIZATION/OU=$OU/C=$COUNTRY/ST=$STATE/L=$LOCALITY/subjectAltName=$SHORT_NAME" -key $FULL_NAME-$TODAY.key -out $FULL_NAME-$TODAY.csr
+/usr/bin/openssl req -new -subj "/CN=$FULL_NAME/O=$ORGANIZATION/OU=$OU/C=$COUNTRY/ST=$STATE/L=$LOCALITY/subjectAltName=$SHORT_NAME" -key $FULL_NAME-$TODAY.key -out $FULL_NAME-$TODAY.csr &>/dev/null
 
 #step 3 - generate the self signed cert from the CSR. This can be replaced with Verisign API later.
-/usr/bin/openssl x509 -req -days $VALID_DAYS -in $FULL_NAME-$TODAY.csr -signkey $FULL_NAME-$TODAY.key -out $FULL_NAME-$TODAY.crt
+/usr/bin/openssl x509 -req -days $VALID_DAYS -in $FULL_NAME-$TODAY.csr -signkey $FULL_NAME-$TODAY.key -out $FULL_NAME-$TODAY.crt &>/dev/null
 
 #step 4 - put both the key and the cert in the same pem file
 /bin/cat $FULL_NAME-$TODAY.key $FULL_NAME-$TODAY.crt > $FULL_NAME-$TODAY.pem
+
+#step 5 - return the filename of the pem file via stdout
+echo $FULL_NAME-$TODAY.pem
