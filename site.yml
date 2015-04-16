@@ -1,9 +1,6 @@
 
-# NOTES FOR BENNO
-# benno, here's some basics that we've worked out for the initial install. 
-# note that we are using haproxy while we get the f5 infrastructure worked out. 
-# what would be helpful is some example code that would precede what you see, that shows us a 'best practice' for provisioning and configuring vsphere guests.
-# thanks, greg
+# provision.xml will precede this
+# within this you'll see the vsphere guest calls.
 
 # Apply common configuration to all hosts
 - hosts: all
@@ -17,11 +14,11 @@
 - hosts: webservers
   user: root
   roles:
-    - jboss # naveen to implement this. single configuration file for cluster configs should be deployed along with installed pacakges.
-    # - ssl_certs # eric to implement this, self-signed for first round...
+    - jboss
 
 # Configure and deploy the load balancer(s).
 - hosts: lbservers
   user: root
   roles:
     - haproxy # basic installation working. need to ensure that it works with jboss. greg current owner.
+    # - ssl_certs # eric to implement this, self-signed for first round...

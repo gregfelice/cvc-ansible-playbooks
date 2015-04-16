@@ -28,8 +28,8 @@
 - name: Change ownership of JBoss installation
   file: path=/usr/share/jboss-as/ owner=jboss group=jboss state=directory recurse=yes
 
-- name: backup existing war
-  command: chdir=/usr/share/jboss-as/standalone/deployments /bin/mv ClusterWebApp.war /usr/share/jboss-as/standalone/backup/ClusterWebApp.war creates=/usr/share/jboss-as/standalone/backup/ClusterWebApp.war
+#- name: backup existing war
+#  command: chdir=/usr/share/jboss-as/standalone/deployments /bin/mv ClusterWebApp.war /usr/share/jboss-as/standalone/backup/ClusterWebApp.war creates=/usr/share/jboss-as/standalone/backup/ClusterWebApp.war
 
 - name: Copying ClusterWebApp.war build
   copy: src=ClusterWebApp.war dest=/usr/share/jboss-as/standalone/deployments owner=jboss group=jboss mode=644 
@@ -41,6 +41,6 @@
 - name: Enable JBoss to be started at boot
   service: name=jboss enabled=yes state=started 
 
-- name: deploy iptables rules
-  template: src=iptables-save dest=/etc/sysconfig/iptables
-  notify: restart iptables
+#- name: deploy iptables rules
+#  template: src=iptables-save dest=/etc/sysconfig/iptables
+#  notify: restart iptables

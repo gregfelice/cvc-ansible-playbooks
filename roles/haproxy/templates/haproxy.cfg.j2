@@ -1,42 +1,28 @@
-
-# this file managed by ansible
+# this file managed by ansible !!
 
 global
-    log         127.0.0.1 local2 
-
-    chroot      /var/lib/haproxy
-    pidfile     /var/run/haproxy.pid
-    maxconn     4000
-    user        root
-    group       root
-    daemon
-
-    # turn on stats unix socket
-    stats socket /var/lib/haproxy/stats level admin
+        log 127.0.0.1 local0
+        maxconn 4096
+        daemon
 
 defaults
-    mode                    {{ mode }}
-    log                     global
-    option                  httplog
-    option                  dontlognull
-    option http-server-close
-    option forwardfor       except 127.0.0.0/8
-    option                  redispatch
-    retries                 3
-    timeout http-request    10s
-    timeout queue           1m
-    timeout connect         10s
-    timeout client          1m
-    timeout server          1m
-    timeout http-keep-alive 10s
-    timeout check           10s
-    maxconn                 3000
+        log global
+        mode http
+        option httplog
+        option dontlognull
+        retries 3
+        option redispatch
+        maxconn 2000
+        contimeout 5000
+        clitimeout 50000
+        srvtimeout 50000
+
+frontend http-in
+        bind *:80
+        default_backend app
 
 backend app
-{% for host in groups['lbservers'] %}
-   listen {{ daemonname }} {{ hostvars[host]['ansible_default_ipv4']['address'] }}:{{ listenport }} # ansible defined
-{% endfor %}
-   balance {{ balance }} # ansible defined
+   balance {{ balance }}
 {% for host in groups['webservers'] %}
-   server {{ host }} {{ hostvars[host]['ansible_default_ipv4']['address'] }}:{{ httpd_port }} # ansible defined
+   server {{ host }} {{ hostvars[host]['ansible_default_ipv4']['address'] }}:{{ httpd_port }}
 {% endfor %}
