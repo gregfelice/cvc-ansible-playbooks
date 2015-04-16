@@ -49,14 +49,14 @@ Work the following issues in parallel with above, report on progress
 
 | Owner | Hostname                  | IP             |
 |-------|---------------------------|----------------|
-| NAVEEN| cvldans1.cscdev.com       |                |
-| NAVEEN| cvldans2.cscdev.com       |                |
-| GREG  | cvldans3.cscdev.com       |                |
-| GREG  | cvldans4.cscdev.com       |                |
-|       | cvldans5.cscdev.com       |                |
-|       | cvldans6.cscdev.com       |                |
-|       | cvldans7.cscdev.com       |                |
-|       | cvldans8.cscdev.com       |                |
+| NAVEEN| cvldans1.cscdev.com       |172.16.107.103  |
+| NAVEEN| cvldans2.cscdev.com       |172.16.107.104  |
+| GREG  | cvldans3.cscdev.com       |172.16.107.105  |
+| GREG  | cvldans4.cscdev.com       |172.16.107.106  |
+| ERIC  | cvldans5.cscdev.com       |172.16.107.107  |
+| ERIC  | cvldans6.cscdev.com       |172.16.107.108  |
+|       | cvldans7.cscdev.com       |172.16.107.109  |
+|       | cvldans8.cscdev.com       |172.16.107.110  |
 
 ## vSphere Console Access
 * username: ansibleadmin@ndcvc.com
