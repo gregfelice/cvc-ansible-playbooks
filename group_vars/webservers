@@ -16,4 +16,10 @@ repository: https://github.com/bennojoy/mywebapp.git
 # this is the sha1sum of V5 of the test webapp.
 webapp_version: 351e47276cc66b018f4890a04709d4cc3d3edb0d
 
+# from naveen's code
+http_port: 8080
+https_port: 8443
+offset_portno: 0
+
+
 
