@@ -1,10 +1,8 @@
 ---
-- hosts: local
-  connection: local
+- name: generate self signed SSL certificate
   sudo: false
-  gather_facts: false
-  tasks:
-  - name: generate self signed SSL certificate
-    command: /home/emcalvin/ansible-playbooks/roles/ssl-cert/files/generate_ssl_selfsigned.sh '{{fqdn}}' '{{short_name}}' '{{cert_length_years}}' 
-    register: ssl_cert_pem_filename
+  command: /home/emcalvin/ansible-playbooks/roles/ssl-cert/files/generate_ssl_selfsigned.sh '{{fqdn}}' '{{short_name}}' '{{cert_length_years}}' '{{cert_dir}}' 
+  register: ssl_cert_pem_filename
 
+- name: Show SSL certificate filename
+  debug: msg="SSL certificate {{ ssl_cert_pem_filename.stdout }}"

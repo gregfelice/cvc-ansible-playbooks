@@ -19,10 +19,21 @@ defaults
 
 frontend http-in
         bind *:80
+	bind *:443 ssl crt /etc/haproxy/{{ common_name }}
         default_backend app
+	redirect scheme https if !{ ssl_fc }
+	mode http
+
 
 backend app
    balance {{ balance }}
+   option forwardfor
+   option httpchk HEAD /{{ health_check_path }} HTTP/1.1\r\nHost:localhost
+  
 {% for host in groups['webservers'] %}
-   server {{ host }} {{ hostvars[host]['ansible_default_ipv4']['address'] }}:{{ httpd_port }}
+   server {{ host }} {{ hostvars[host]['ansible_default_ipv4']['address'] }}:{{ httpd_port }} check
 {% endfor %}
+
+   http-request set-header X-Forwarded-Port %[dst_port]
+   http-request add-header X-Forwarded-Proto https if { ssl_fc }
+
