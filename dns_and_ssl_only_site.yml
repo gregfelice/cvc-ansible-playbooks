@@ -1,0 +1,8 @@
+#step 1 - DNS for 2 hosts and a common name for website
+- hosts: local
+  gather_facts: no
+  roles:
+    - { role: dns-record, start_ip: '{{ start_ip }}', end_ip: '{{ end_ip }}', server_name: '{{ server1_hostname }}' }
+    - { role: dns-record, start_ip: '{{ start_ip }}', end_ip: '{{ end_ip }}', server_name: '{{ server2_hostname }}' }
+    - { role: dns-record, start_ip: '{{ start_ip }}', end_ip: '{{ end_ip }}', server_name: '{{ common_name }}' }
+    - { role: ssl-cert, fqdn: '{{ common_name }}', short_name: '{{ short_name }}', cert_length_years: '{{ cert_length_years }}', cert_dir: '{{ cert_dir}}' }
