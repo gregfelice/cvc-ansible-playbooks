@@ -1,9 +1,8 @@
 ---
-- hosts: local
-  connection: local
+- name: add_dns_record
   sudo: true
-  gather_facts: false
-  tasks:
-  - name: get next available ip and add newly provisioned host to dns
-    command: /home/emcalvin/ansible-playbooks/roles/dns-record/files/add_dns_wrapper.sh '{{ start_ip }}' '{{end_ip}}' '{{server_name}}' 
-    register: new_host_ip
+  #gather_facts: false
+  command: /home/emcalvin/ansible-playbooks/roles/dns-record/files/add_dns_wrapper.sh '{{ start_ip }}' '{{end_ip}}' '{{server_name}}' 
+  register: new_host_ip
+- name: Show the IP we registered in DNS.
+  debug: msg="{{ server_name }} {{ new_host_ip.stdout }}"

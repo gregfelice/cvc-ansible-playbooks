@@ -1,4 +1,6 @@
 ---
 # Variables here are applicable to all host groups
 
-httpd_port: 80
+# used here. need to refactor.
+# roles/haproxy/templates/haproxy.cfg.j2:   server {{ host }} {{ hostvars[host]['ansible_default_ipv4']['address'] }}:{{ httpd_port }} # ansible defined
+httpd_port: 8080
