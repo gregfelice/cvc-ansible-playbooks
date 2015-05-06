@@ -23,7 +23,7 @@ from optparse import OptionParser
 
 
 def get_ssl_certificate(csr_file, challenge_phrase, cert_type, server_type, validity_period, cert_algorithm, first_name,
-                        last_name, email):
+                        last_name, email, debug):
   """Connect to Verisign API.  Purchase certificate. Return the certificate object and transactionId string"""
 
   #Open csr_file as a file object
@@ -70,16 +70,25 @@ def get_ssl_certificate(csr_file, challenge_phrase, cert_type, server_type, vali
     print "ERROR: REST call to Verisign did not respond with response code of 200(OK). Details:", r.status_code
     sys.exit(3)
 
+  #If Debug is enabled, print the whole response payload.
+  if debug: print r.text
+
   #Parse the XML response to get the cert and transactionId
   verisign_response_xml = minidom.parseString(r.text)
-  verisign_response_status_code = verisign_response_xml.getElementsByTagName("StatusCode")[0].firstChild.data
-  verisign_response_message = verisign_response_xml.getElementsByTagName("Message")[0].firstChild.data
-  ssl_certificate = verisign_response_xml.getElementsByTagName("Certificate")[0].firstChild.data
-  transaction_id = verisign_response_xml.getElementsByTagName("Transaction_ID").firstChild.data
+  verisign_response_status_code = verisign_response_xml.getElementsByTagName("StatusCode")[0]
+  verisign_response_message = verisign_response_xml.getElementsByTagName("Message")[0]
+  response_status_code = verisign_response_status_code.firstChild.data
+  response_message = verisign_response_message.firstChild.data
 
-  if verisign_response_status_code not '0x00':
-    print "ERROR: Verisign API status code not 0x00. Details", verisign_response_status_code, verisign_response_message
+  if not response_status_code == "0x00":
+    print "ERROR: Verisign API status code not 0x00. Details", response_status_code, response_message
     sys.exit(4)
+
+  verisign_ssl_certificate = verisign_response_xml.getElementsByTagName("Certificate")[0]
+  verisign_transaction_id = verisign_response_xml.getElementsByTagName("Transaction_ID")[0]
+  ssl_certificate = verisign_ssl_certificate.firstChild.data
+  transaction_id = verisign_transaction_id.firstChild.data
+
 
   return ssl_certificate, transaction_id
 
@@ -118,6 +127,7 @@ def main():
   parser.add_option("-l", "--last-name", dest="last_name", help="Last Name of requestor. REQUIRED.")
   parser.add_option("-e", "--email", dest="email",
                     help="Email address of the requestor. Use your team group email address. REQUIRED.")
+  parser.add_option("-d", "--debug", dest="debug", action="store_true", help="Enable debug output. OPTIONAL")
   (options, args) = parser.parse_args()
 
   #Check all the command line options
@@ -128,11 +138,14 @@ def main():
   #Connect to Verisign, purchase cert.  Returns the cert and transactionID
   (ssl_certificate, transactionId) = get_ssl_certificate(csr_file=options.csr_file,
                                                          challenge_phrase=options.challenge_phrase,
-                                                         cert_type=options.cert_type, server_type=options.server_type,
+                                                         cert_type=options.cert_type,
+                                                         server_type=options.server_type,
                                                          validity_period=options.validity_period,
-                                                         cert_algorithm=options.cert_algorith,
-                                                         first_name=options.first_name, last_name=options.last_name,
-                                                         email=options.email)
+                                                         cert_algorithm=options.cert_algorithm,
+                                                         first_name=options.first_name,
+                                                         last_name=options.last_name,
+                                                         email=options.email,
+                                                         debug=options.debug)
 
   #Write the SSL certificate to a file
   create_ssl_cert_file(ssl_certificate_file_output=options.cert_file, ssl_certificate=ssl_certificate)
