@@ -24,11 +24,7 @@ OU="Enterprise IT"
 TODAY=`date +%m-%d-%Y_%H%M`
 
 #step 1 - generate private key
-<<<<<<< HEAD
 /usr/bin/openssl genrsa -out $CERT_DIR/$FULL_NAME-$TODAY.key 2048 &>/dev/null
-=======
-/usr/bin/openssl genrsa -out $CERT_DIR/$FULL_NAME-$TODAY.key &>/dev/null
->>>>>>> edcffb345972ff6ff4dbf2a848355f9d3d7dea21
 
 #step 2 - generate the CSR
 /usr/bin/openssl req -new -subj "/CN=$FULL_NAME/O=$ORGANIZATION/OU=$OU/C=$COUNTRY/ST=$STATE/L=$LOCALITY/subjectAltName=$SHORT_NAME" -key $CERT_DIR/$FULL_NAME-$TODAY.key -out $CERT_DIR/$FULL_NAME-$TODAY.csr &>/dev/null
