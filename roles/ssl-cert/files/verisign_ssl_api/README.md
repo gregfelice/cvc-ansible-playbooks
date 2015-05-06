@@ -27,14 +27,15 @@ How do I install the supporting libraries?
 
 How do I run this script ?
 --------------------------
--You must have a CSR already prepared.  This is your Certificate Signing Request which contains all your cert metadata.
--Your Verisign/Symantec account must be enabled for VICE 2.0 web services. Contact Symantec Customer Service to request it.
--The Verisign API requires certificate based authentication.  You will recieve this cert when your account is enabled for VICE 2.0.  The cert must be in x509 format. They probably will give it to you in PFX format.
--Example on how to convert a PFX format cert to x509 format: openssl pkcs12 -in SSLWEBSERVICES.pfx -out verisign_ssl_client_cert_api.pem -nodes
+* You must have a CSR and key already prepared.  The CSR is your Certificate Signing Request which contains all your cert metadata.
+* Your Verisign/Symantec account must be enabled for VICE 2.0 web services. Contact Symantec Customer Service to request it.
+* The Verisign API requires certificate based authentication.  You will recieve this cert when your account is enabled for VICE 2.0.  The cert must be in x509 format. They probably will give it to you in PFX format.
+* Example on how to convert a PFX format cert to x509 format: openssl pkcs12 -in SSLWEBSERVICES.pfx -out verisign_ssl_client_cert_api.pem -nodes
 
 **To run this script:**
 
 1. Edit settings.ini to customize it to your settings.
+2. If you need to generate a new key (2048 bit RSA) and CSR, you can run:  ./generate_key_and_csr.sh
 2. Run it: ./verisign_purchase_ssl_certificate.py -c www.example.com.csr -p "DuckvillePlatapuss" -t "Server" -s "Apache" -y 1 -f ./www.example.com.crt -g "Eric" -l "McAlvin" -e "my_email_address@yahoo.com" -d
 
 
