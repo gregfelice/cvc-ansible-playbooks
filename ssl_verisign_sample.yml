@@ -1,0 +1,5 @@
+- hosts: local
+  gather_facts: no
+  roles:
+    - { role: ssl-cert-verisign, key_file: '{{key_file}}', csr_file: '{{csr_file}}', fqdn: '{{fqdn}}', ou: '{{ou}}', challenge_phrase: '{{challenge_phrase}}', cert_type: '{{cert_type}}', server_type: '{{server_type}}', validity_period: '{{validity_period}}', cert_file: '{{cert_file}}', first_name: '{{first_name}}', last_name: '{{last_name}}', email: '{{email}}' }
+
