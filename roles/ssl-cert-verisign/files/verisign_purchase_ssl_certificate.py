@@ -26,7 +26,7 @@ import subprocess
 def generate_private_key(output_file):
   """Generate the SSL private key by using the openssl command"""
   try:
-    subprocess.check_output([settings.OPENSSL, settings.SSL_KEY_TYPE, "-out", output_file, settings.SSL_KEY_BITS],
+    subprocess.check_call([settings.OPENSSL, settings.SSL_KEY_TYPE, "-out", output_file, settings.SSL_KEY_BITS],
                             stderr=subprocess.STDOUT)
   except subprocess.CalledProcessError, e:
     print "ERROR: Unable to generate OpenSSL key due to the following error: ", e
@@ -42,7 +42,7 @@ def generate_csr(csr_file, fqdn, ou, key_file):
                                                                                       country=settings.COUNTRY,
                                                                                       state=settings.STATE,
                                                                                       locality=settings.LOCALITY)
-    subprocess.check_output([settings.OPENSSL, "req", "-new", "-subj", csr_subject, "-key", key_file, "-out", csr_file],
+    subprocess.check_call([settings.OPENSSL, "req", "-new", "-subj", csr_subject, "-key", key_file, "-out", csr_file],
                             stderr=subprocess.STDOUT)
   except subprocess.CalledProcessError, e:
     print "ERROR: Unable to generate the CSR due to the following error: ", e
