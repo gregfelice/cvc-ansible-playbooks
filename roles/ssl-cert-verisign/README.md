@@ -18,6 +18,8 @@
 
 ### To run directly via commandline:
 `ansible-playbook -i hosts_emcalvin_ssl_cert_example roles/ssl-cert-verisign/tasks/main.yml --extra-vars "key_file=/tmp/www.cscdev.com.key csr_file=/tmp/www.cscdev.com.csr cert_file=/tmp/www.cscdev.com.crt fqdn=www.cscdev.com ou=EIT challenge_phrase=DuckvillePlatapuss cert_type=Server server_type=Apache validity_period=1 first_name=Eric last_name=McAlvin email=emcalvin@cablevision.com"`
+OR in a larger playbook:
+`ansible-playbook -i hosts_emcalvin_ssl_cert_example ssl.yml --extra-vars "key_file=/tmp/www15.cscdev.com.key csr_file=/tmp/www15.cscdev.com.csr cert_file=/tmp/www15.cscdev.com.crt fqdn=www15.cscdev.com ou=EIT challenge_phrase=DuckvillePlatapuss cert_type=Server server_type=Apache validity_period=1 first_name=Eric last_name=McAlvin email=emcalvin@cablevision.com" -vvv`
 
 ### The inventory file in the above example uses the localhost to run the playbook and looks like this:
 ```
